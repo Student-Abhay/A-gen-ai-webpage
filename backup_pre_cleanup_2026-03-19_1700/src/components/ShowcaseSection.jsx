@@ -13,7 +13,7 @@ const showcaseItems = [
   {
     title: "Quantum-Grade Security",
     description:
-      "256-bit post-quantum encryption shields every transaction. Zero-knowledge proofs ensure your data remains yours - always.",
+      "256-bit post-quantum encryption shields every transaction. Zero-knowledge proofs ensure your data remains yours—always.",
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
     tags: ["Encryption", "Zero-Knowledge", "Compliance"],
   },
@@ -41,8 +41,9 @@ function ShowcaseCard({ item, index }) {
         isEven ? "lg:flex-row" : "lg:flex-row-reverse"
       } gap-8 lg:gap-16 items-center`}
     >
+      {/* Image */}
       <div className="w-full lg:w-1/2 relative group">
-        <div className="absolute -inset-1 bg-linear-to-r from-cyan-500/20 via-purple-500/20 to-cyan-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-cyan-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
         <div className="relative overflow-hidden rounded-2xl border border-white/10">
           <motion.img
             src={item.image}
@@ -51,10 +52,11 @@ function ShowcaseCard({ item, index }) {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           />
-          <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
       </div>
 
+      {/* Content */}
       <div className="w-full lg:w-1/2 space-y-6">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
@@ -107,7 +109,7 @@ function ShowcaseCard({ item, index }) {
           <button className="group/btn flex items-center gap-2 text-white font-medium mt-2 hover:text-cyan-400 transition-colors duration-300">
             Explore Feature
             <span className="inline-block transition-transform duration-300 group-hover/btn:translate-x-2">
-              -&gt;
+              →
             </span>
           </button>
         </motion.div>
@@ -131,12 +133,14 @@ export default function ShowcaseSection() {
       id="showcase"
       className="relative py-32 sm:py-40 overflow-hidden"
     >
+      {/* Parallax accent */}
       <motion.div
         style={{ y: backgroundY }}
-        className="absolute top-1/4 right-0 w-125 h-125 bg-purple-600/5 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-3xl pointer-events-none"
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={headerVisible ? { opacity: 1, y: 0 } : {}}
@@ -145,7 +149,7 @@ export default function ShowcaseSection() {
         >
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
             Built for the{" "}
-            <span className="bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               Impossible
             </span>
           </h2>
@@ -154,6 +158,7 @@ export default function ShowcaseSection() {
           </p>
         </motion.div>
 
+        {/* Showcase Cards */}
         <div className="space-y-32">
           {showcaseItems.map((item, i) => (
             <ShowcaseCard key={item.title} item={item} index={i} />

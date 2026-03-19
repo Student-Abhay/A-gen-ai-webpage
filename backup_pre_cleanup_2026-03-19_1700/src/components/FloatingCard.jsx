@@ -42,7 +42,7 @@ export default function FloatingCard({
         boxShadow: `0 8px 60px ${glowColor}`,
       }}
       className={`relative rounded-2xl border border-white/10
-        bg-white/4 backdrop-blur-xl p-6
+        bg-white/[0.04] backdrop-blur-xl p-6
         transition-colors duration-300 hover:border-cyan-400/30 ${className}`}
     >
       {/* inner glow orb */}

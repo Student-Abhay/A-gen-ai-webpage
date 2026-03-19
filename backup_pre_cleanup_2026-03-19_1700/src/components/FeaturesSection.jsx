@@ -23,7 +23,7 @@ const FEATURES = [
     ),
     title: "Adaptive Design Tokens",
     description:
-      "A living design system that mutates with your brand. Tokens propagate across every component, every breakpoint - no stale stylesheets, ever.",
+      "A living design system that mutates with your brand. Tokens propagate across every component, every breakpoint — no stale stylesheets, ever.",
     gradient: "from-nexus-400 to-nexus-600",
     shadow: "shadow-nexus-500/20",
   },
@@ -47,7 +47,7 @@ const FEATURES = [
     ),
     title: "AI Co-Pilot",
     description:
-      "Context-aware suggestions that understand your codebase topology. Not autocomplete - an actual second pair of eyes scanning architecture.",
+      "Context-aware suggestions that understand your codebase topology. Not autocomplete — an actual second pair of eyes scanning architecture.",
     gradient: "from-violet-400 to-purple-600",
     shadow: "shadow-violet-500/20",
   },
@@ -71,7 +71,7 @@ const FEATURES = [
     ),
     title: "Composable Layouts",
     description:
-      "Drag, nest, and reconfigure. Every section is a self-contained island with its own data scope, styles, and lifecycle hooks - fully tree-shakable.",
+      "Drag, nest, and reconfigure. Every section is a self-contained island with its own data scope, styles, and lifecycle hooks — fully tree-shakable.",
     gradient: "from-cyan-400 to-blue-500",
     shadow: "shadow-cyan-500/20",
   },
@@ -93,27 +93,32 @@ function FeatureCard({ feature, index }) {
       }}
       className="group relative"
     >
-      <div className="relative h-full p-6 sm:p-8 rounded-3xl bg-white/3 border border-white/6 hover:border-white/12 transition-all duration-500 overflow-hidden">
+      <div className="relative h-full p-6 sm:p-8 rounded-3xl bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-500 overflow-hidden">
+        {/* Hover glow */}
         <div
-          className={`absolute -top-24 -right-24 w-48 h-48 rounded-full bg-linear-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-700`}
+          className={`absolute -top-24 -right-24 w-48 h-48 rounded-full bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-700`}
         />
 
+        {/* Icon */}
         <div
-          className={`w-12 h-12 rounded-2xl bg-linear-to-br ${feature.gradient} ${feature.shadow} shadow-lg flex items-center justify-center text-white mb-5`}
+          className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${feature.gradient} ${feature.shadow} shadow-lg flex items-center justify-center text-white mb-5`}
         >
           {feature.icon}
         </div>
 
+        {/* Title */}
         <h3 className="font-display font-bold text-lg text-white mb-3 group-hover:text-gradient transition-all duration-300">
           {feature.title}
         </h3>
 
+        {/* Description */}
         <p className="text-sm leading-relaxed text-nexus-400 group-hover:text-nexus-300 transition-colors duration-300">
           {feature.description}
         </p>
 
+        {/* Bottom accent line */}
         <div
-          className={`absolute bottom-0 left-0 h-px w-0 group-hover:w-full bg-linear-to-r ${feature.gradient} transition-all duration-700`}
+          className={`absolute bottom-0 left-0 h-px w-0 group-hover:w-full bg-gradient-to-r ${feature.gradient} transition-all duration-700`}
         />
       </div>
     </motion.div>
@@ -126,9 +131,11 @@ export default function FeaturesSection() {
 
   return (
     <section className="relative py-24 sm:py-32 overflow-hidden">
+      {/* Background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(120,119,198,0.15),transparent_60%)]" />
 
       <div className="relative max-w-7xl mx-auto px-6">
+        {/* Heading */}
         <motion.div
           ref={headingRef}
           initial={{ opacity: 0, y: 40 }}
@@ -138,14 +145,15 @@ export default function FeaturesSection() {
         >
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
             Everything You Need.
-            <span className="block text-gradient">Nothing You Don&apos;t.</span>
+            <span className="block text-gradient">Nothing You Don’t.</span>
           </h2>
           <p className="text-nexus-400 text-lg leading-relaxed">
             A modern platform engineered for velocity, collaboration, and
-            security - designed to scale from side projects to global products.
+            security — designed to scale from side projects to global products.
           </p>
         </motion.div>
 
+        {/* Features Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {FEATURES.map((feature, index) => (
             <FeatureCard key={feature.title} feature={feature} index={index} />

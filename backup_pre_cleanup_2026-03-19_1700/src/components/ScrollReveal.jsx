@@ -1,5 +1,5 @@
 // src/components/ScrollReveal.jsx
-import { useRef, useEffect, cloneElement, Children } from 'react';
+import { useRef, useEffect, useState, cloneElement, Children } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -31,13 +31,19 @@ export default function ScrollReveal({
   markers = false,
   className = '',
   as: Tag = 'div',
+  threshold = 0,
   customFrom = null,
   customTo = null,
 }) {
   const containerRef = useRef(null);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!ready || !containerRef.current) return;
 
     const el = containerRef.current;
     const targets = el.querySelectorAll('[data-sr-item]');
@@ -86,7 +92,7 @@ export default function ScrollReveal({
         if (t.trigger === el) t.kill();
       });
     };
-  }, [preset, duration, delay, ease, stagger, start, end, scrub, once, markers, customFrom, customTo]);
+  }, [ready, preset, duration, delay, ease, stagger, start, end, scrub, once, markers, customFrom, customTo]);
 
   return (
     <Tag ref={containerRef} className={className} style={{ visibility: 'hidden' }}>
@@ -95,6 +101,7 @@ export default function ScrollReveal({
   );
 }
 
+/* ── Convenience wrapper: marks each child as a stagger target ── */
 export function ScrollRevealGroup({
   children,
   preset = 'slideUp',

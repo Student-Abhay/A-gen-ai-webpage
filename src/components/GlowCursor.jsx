@@ -66,7 +66,7 @@ export default function GlowCursor() {
     <>
       <div
         ref={cursorRef}
-        className="custom-cursor fixed top-0 left-0 w-5 h-5 rounded-full pointer-events-none z-[99999]"
+        className="custom-cursor fixed top-0 left-0 w-5 h-5 rounded-full pointer-events-none z-99999"
         style={{
           background: 'radial-gradient(circle, rgba(108,99,255,0.9) 0%, transparent 70%)',
           mixBlendMode: 'difference',
@@ -74,7 +74,7 @@ export default function GlowCursor() {
       />
       <div
         ref={followerRef}
-        className="custom-cursor fixed top-0 left-0 w-[300px] h-[300px] rounded-full pointer-events-none z-[9998] opacity-[0.08]"
+        className="custom-cursor fixed top-0 left-0 w-75 h-75 rounded-full pointer-events-none z-9998 opacity-[0.08]"
         style={{
           background: 'radial-gradient(circle, rgba(0,240,255,0.6) 0%, rgba(108,99,255,0.3) 40%, transparent 70%)',
           filter: 'blur(40px)',

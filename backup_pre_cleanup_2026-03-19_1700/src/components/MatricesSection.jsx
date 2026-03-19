@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import useInView from "../hooks/useInView";
 
@@ -44,8 +44,9 @@ export default function MetricsSection() {
 
   return (
     <section ref={ref} className="relative py-28 sm:py-36 overflow-hidden">
+      {/* Divider lines */}
       <div className="absolute inset-0 flex justify-center pointer-events-none">
-        <div className="w-px h-full bg-linear-to-b from-transparent via-white/5 to-transparent" />
+        <div className="w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,11 +72,11 @@ export default function MetricsSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.12, duration: 0.7 }}
-              className="group relative text-center p-8 rounded-2xl border border-white/5 bg-white/2 backdrop-blur-sm hover:border-cyan-500/20 transition-colors duration-500"
+              className="group relative text-center p-8 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm hover:border-cyan-500/20 transition-colors duration-500"
             >
-              <div className="absolute inset-0 rounded-2xl bg-linear-to-b from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative">
-                <p className="text-4xl sm:text-5xl font-bold text-white mb-3 bg-linear-to-r from-white to-gray-300 bg-clip-text">
+                <p className="text-4xl sm:text-5xl font-bold text-white mb-3 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                   <AnimatedCounter
                     target={m.value}
                     suffix={m.suffix}

@@ -12,7 +12,7 @@ const testimonials = [
   },
   {
     quote:
-      "We migrated 14 microservices in a weekend. The developer experience is genuinely unmatched - everything just works.",
+      "We migrated 14 microservices in a weekend. The developer experience is genuinely unmatched—everything just works.",
     name: "Daisuke Tanaka",
     role: "Lead Engineer, KaizenOps",
     avatar: "DT",
@@ -53,7 +53,8 @@ export default function TestimonialsSection() {
       ref={sectionRef}
       className="relative py-32 sm:py-40 overflow-hidden"
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-purple-600/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
@@ -64,13 +65,14 @@ export default function TestimonialsSection() {
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Trusted by{" "}
-            <span className="bg-linear-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
               Industry Leaders
             </span>
           </h2>
         </motion.div>
 
-        <div className="relative min-h-70 flex items-center justify-center">
+        {/* Quote Card */}
+        <div className="relative min-h-[280px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -80,7 +82,7 @@ export default function TestimonialsSection() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-0 flex flex-col items-center justify-center"
             >
-              <div className="relative p-8 sm:p-12 rounded-3xl border border-white/5 bg-white/2 backdrop-blur-md">
+              <div className="relative p-8 sm:p-12 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-md">
                 <span className="absolute top-4 left-6 text-6xl text-cyan-500/10 font-serif leading-none select-none">
                   "
                 </span>
@@ -88,7 +90,7 @@ export default function TestimonialsSection() {
                   {current.quote}
                 </p>
                 <div className="flex items-center justify-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-linear-to-br from-cyan-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
                     {current.avatar}
                   </div>
                   <div className="text-left">
@@ -101,6 +103,7 @@ export default function TestimonialsSection() {
           </AnimatePresence>
         </div>
 
+        {/* Dots */}
         <div className="flex justify-center gap-3 mt-12">
           {testimonials.map((_, i) => (
             <button

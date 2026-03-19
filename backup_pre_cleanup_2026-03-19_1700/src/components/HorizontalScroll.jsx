@@ -26,7 +26,8 @@ const HorizontalScroll = ({
     const panels = gsap.utils.toArray(track.children);
     if (!panels.length) return;
 
-    const ctx = gsap.context(() => {
+    let ctx = gsap.context(() => {
+      // total width the track needs to travel
       const totalScroll = track.scrollWidth - window.innerWidth;
 
       const tl = gsap.timeline({
@@ -53,6 +54,7 @@ const HorizontalScroll = ({
         ease: 'none',
       });
 
+      // progress bar
       if (showProgress && progressRef.current) {
         tl.to(
           progressRef.current,
@@ -64,7 +66,8 @@ const HorizontalScroll = ({
         );
       }
 
-      panels.forEach((panel) => {
+      // per-panel parallax + reveal
+      panels.forEach((panel, i) => {
         const img = panel.querySelector('.hs-parallax-img');
         const content = panel.querySelector('.hs-content');
 
@@ -116,6 +119,7 @@ const HorizontalScroll = ({
       className={`relative overflow-hidden ${className}`}
       style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(15,10,30,0.6) 100%)' }}
     >
+      {/* ── top label + progress ── */}
       {(sectionLabel || showProgress) && (
         <div className="absolute top-0 left-0 z-20 w-full px-6 pt-6 md:px-12 md:pt-10">
           {sectionLabel && (
@@ -144,6 +148,7 @@ const HorizontalScroll = ({
         </div>
       )}
 
+      {/* ── horizontal track ── */}
       <div
         ref={trackRef}
         className="flex items-stretch h-screen will-change-transform"
@@ -162,11 +167,13 @@ const HorizontalScroll = ({
           : children}
       </div>
 
+      {/* ── scroll hint (fades after first scroll) ── */}
       <ScrollHint containerRef={sectionRef} />
     </section>
   );
 };
 
+/* ── tiny self-dismissing scroll hint ── */
 const ScrollHint = ({ containerRef }) => {
   const hintRef = useRef(null);
 
@@ -174,6 +181,7 @@ const ScrollHint = ({ containerRef }) => {
     if (!hintRef.current || !containerRef.current) return;
 
     const ctx = gsap.context(() => {
+      // pulse
       gsap.to(hintRef.current, {
         x: 10,
         repeat: -1,
@@ -182,6 +190,7 @@ const ScrollHint = ({ containerRef }) => {
         ease: 'power1.inOut',
       });
 
+      // fade out once user starts scrolling into the section
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: 'top top',
@@ -193,7 +202,7 @@ const ScrollHint = ({ containerRef }) => {
     }, containerRef);
 
     return () => ctx.revert();
-  }, [containerRef]);
+  }, []);
 
   return (
     <div

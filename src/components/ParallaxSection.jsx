@@ -37,7 +37,7 @@ export default function ParallaxSection() {
     <section
       ref={sectionRef}
       className="relative min-h-screen overflow-hidden flex items-center justify-center
-        bg-gradient-to-b from-gray-950 via-[#0a0f1e] to-gray-950"
+        bg-linear-to-b from-gray-950 via-[#0a0f1e] to-gray-950"
     >
       {/* floating orbs */}
       <div
@@ -69,7 +69,7 @@ export default function ParallaxSection() {
         <h2
           ref={headingRef}
           className="text-5xl md:text-7xl font-bold tracking-tight
-            bg-gradient-to-r from-cyan-300 via-violet-400 to-fuchsia-400
+            bg-linear-to-r from-cyan-300 via-violet-400 to-fuchsia-400
             bg-clip-text text-transparent leading-tight"
         >
           Built for the Next Decade
@@ -85,7 +85,7 @@ export default function ParallaxSection() {
       </div>
 
       {/* horizontal scan line */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-cyan-500/40 to-transparent" />
     </section>
   );
 }

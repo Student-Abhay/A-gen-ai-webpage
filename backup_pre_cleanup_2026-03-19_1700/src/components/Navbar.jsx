@@ -48,7 +48,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <a href="#" className="relative group flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-linear-to-br from-nexus-400 to-nexus-600 flex items-center justify-center shadow-lg shadow-nexus-500/25">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-nexus-400 to-nexus-600 flex items-center justify-center shadow-lg shadow-nexus-500/25">
               <span className="text-white font-display font-bold text-sm">N</span>
             </div>
             <span className="font-display font-bold text-lg tracking-tight text-white">
@@ -66,7 +66,7 @@ export default function Navbar() {
                 className="relative px-4 py-2 text-sm font-medium text-nexus-300 hover:text-white transition-colors duration-200 group"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-px bg-linear-to-r from-nexus-400 to-nexus-600 group-hover:w-3/4 transition-all duration-300" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-px bg-gradient-to-r from-nexus-400 to-nexus-600 group-hover:w-3/4 transition-all duration-300" />
               </button>
             ))}
           </div>
@@ -76,7 +76,7 @@ export default function Navbar() {
             <button className="px-5 py-2 text-sm font-medium text-nexus-300 hover:text-white transition-colors duration-200">
               Log in
             </button>
-            <button className="px-5 py-2.5 text-sm font-semibold text-white bg-linear-to-r from-nexus-500 to-nexus-600 rounded-xl hover:shadow-lg hover:shadow-nexus-500/25 active:scale-[0.97] transition-all duration-200">
+            <button className="px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-nexus-500 to-nexus-600 rounded-xl hover:shadow-lg hover:shadow-nexus-500/25 active:scale-[0.97] transition-all duration-200">
               Get Started
             </button>
           </div>
@@ -109,7 +109,7 @@ export default function Navbar() {
 
         {/* Scroll Progress */}
         <motion.div
-          className="absolute bottom-0 left-0 h-px bg-linear-to-r from-nexus-400 via-nexus-500 to-nexus-600"
+          className="absolute bottom-0 left-0 h-px bg-gradient-to-r from-nexus-400 via-nexus-500 to-nexus-600"
           style={{ width: `${progress * 100}%` }}
         />
       </motion.nav>
@@ -149,7 +149,7 @@ export default function Navbar() {
                 <button className="w-full py-3 text-base font-medium text-nexus-300 border border-white/10 rounded-xl hover:bg-white/5 transition-colors">
                   Log in
                 </button>
-                <button className="w-full py-3 text-base font-semibold text-white bg-linear-to-r from-nexus-500 to-nexus-600 rounded-xl hover:shadow-lg hover:shadow-nexus-500/25 transition-all">
+                <button className="w-full py-3 text-base font-semibold text-white bg-gradient-to-r from-nexus-500 to-nexus-600 rounded-xl hover:shadow-lg hover:shadow-nexus-500/25 transition-all">
                   Get Started
                 </button>
               </motion.div>

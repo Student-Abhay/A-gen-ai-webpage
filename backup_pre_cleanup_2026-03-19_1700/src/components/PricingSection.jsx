@@ -24,7 +24,7 @@ const plans = [
     description: 'Unlimited power for teams shipping at scale.',
     features: [
       'Unlimited projects',
-      'Priority support - 4 h SLA',
+      'Priority support — 4 h SLA',
       '100 GB asset storage',
       'Advanced analytics & A/B',
       'Custom domain + SSL',
@@ -72,8 +72,9 @@ export default function PricingSection() {
       ref={ref}
       className="relative py-32 px-6 bg-gray-950 overflow-hidden"
     >
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-175 h-175
-        rounded-full bg-violet-600/6 blur-[160px] pointer-events-none" />
+      {/* ambient glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px]
+        rounded-full bg-violet-600/[0.06] blur-[160px] pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
         <motion.div
@@ -113,13 +114,13 @@ export default function PricingSection() {
                 {plan.highlighted && (
                   <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1
                     rounded-full text-[11px] font-bold tracking-widest uppercase
-                    bg-linear-to-r from-violet-600 to-fuchsia-500 text-white shadow-lg">
+                    bg-gradient-to-r from-violet-600 to-fuchsia-500 text-white shadow-lg">
                     Most Popular
                   </span>
                 )}
 
                 <h3 className="text-xl font-semibold text-white">{plan.name}</h3>
-                <p className="mt-2 text-sm text-gray-400 leading-relaxed min-h-12">
+                <p className="mt-2 text-sm text-gray-400 leading-relaxed min-h-[48px]">
                   {plan.description}
                 </p>
 
@@ -158,7 +159,7 @@ export default function PricingSection() {
                     className={`w-full text-sm ${
                       plan.highlighted
                         ? ''
-                        : 'bg-linear-to-r from-white/10 to-white/5 shadow-none hover:shadow-[0_0_24px_rgba(255,255,255,0.08)]'
+                        : 'bg-gradient-to-r from-white/10 to-white/5 shadow-none hover:shadow-[0_0_24px_rgba(255,255,255,0.08)]'
                     }`}
                   >
                     {plan.cta}

@@ -1,6 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 // src/components/animations/TextReveal.jsx
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -9,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const TextReveal = ({
   children,
   as: Tag = 'div',
-  variant = 'words',
+  variant = 'words',    // 'chars' | 'words' | 'lines' | 'mask' | 'scramble' | 'typewriter'
   stagger = 0.035,
   duration = 0.8,
   ease = 'power3.out',
@@ -23,6 +22,7 @@ const TextReveal = ({
 }) => {
   const containerRef = useRef(null);
   const hasAnimated = useRef(false);
+  const [scrambleText, setScrambleText] = useState('');
   const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const TextReveal = ({
     if (!container || hasAnimated.current) return;
 
     const text = typeof children === 'string' ? children : container.textContent;
-    const ctx = gsap.context(() => {
+    let ctx = gsap.context(() => {
       switch (variant) {
         case 'chars':
           animateChars(container, text);
@@ -58,11 +58,11 @@ const TextReveal = ({
     return () => ctx.revert();
   }, [children, variant]);
 
-  /* CHAR-BY-CHAR */
+  /* ─── CHAR-BY-CHAR ─── */
   const animateChars = (container, text) => {
     container.innerHTML = '';
 
-    text.split(' ').forEach((word) => {
+    const wordSpans = text.split(' ').map((word) => {
       const wordWrapper = document.createElement('span');
       wordWrapper.style.cssText = 'display:inline-block;white-space:nowrap;';
 
@@ -81,6 +81,7 @@ const TextReveal = ({
       spacer.innerHTML = '&nbsp;';
       spacer.style.display = 'inline-block';
       container.appendChild(spacer);
+      return wordWrapper;
     });
 
     const allChars = container.querySelectorAll('.tr-char');
@@ -111,7 +112,7 @@ const TextReveal = ({
     if (!scrollTrigger) tl.play();
   };
 
-  /* WORD-BY-WORD */
+  /* ─── WORD-BY-WORD ─── */
   const animateWords = (container, text) => {
     container.innerHTML = '';
 
@@ -166,7 +167,7 @@ const TextReveal = ({
     if (!scrollTrigger) tl.play();
   };
 
-  /* LINE-BY-LINE */
+  /* ─── LINE-BY-LINE ─── */
   const animateLines = (container, text) => {
     container.innerHTML = '';
 
@@ -212,7 +213,7 @@ const TextReveal = ({
     if (!scrollTrigger) tl.play();
   };
 
-  /* MASK WIPE */
+  /* ─── MASK WIPE ─── */
   const animateMask = (container, text) => {
     container.style.cssText += 'position:relative;overflow:hidden;';
 
@@ -263,7 +264,7 @@ const TextReveal = ({
     if (!scrollTrigger) tl.play();
   };
 
-  /* SCRAMBLE */
+  /* ─── SCRAMBLE ─── */
   const animateScramble = (container, originalText) => {
     container.innerHTML = '';
 
@@ -273,6 +274,7 @@ const TextReveal = ({
 
     const totalFrames = Math.ceil(duration * 60);
     let frame = 0;
+    let rafId;
 
     const run = () => {
       const progress = frame / totalFrames;
@@ -293,7 +295,7 @@ const TextReveal = ({
       frame++;
 
       if (frame <= totalFrames) {
-        requestAnimationFrame(run);
+        rafId = requestAnimationFrame(run);
       } else {
         textSpan.textContent = originalText;
       }
@@ -313,7 +315,7 @@ const TextReveal = ({
     }
   };
 
-  /* TYPEWRITER */
+  /* ─── TYPEWRITER ─── */
   const animateTypewriter = (container, originalText) => {
     container.innerHTML = '';
 
@@ -322,7 +324,7 @@ const TextReveal = ({
     container.appendChild(textSpan);
 
     const cursor = document.createElement('span');
-    cursor.textContent = '|';
+    cursor.textContent = '▌';
     cursor.style.cssText = 'display:inline-block;animation:tr-blink 0.7s step-end infinite;color:rgb(139,92,246);';
     container.appendChild(cursor);
 
@@ -357,7 +359,7 @@ const TextReveal = ({
     }
   };
 
-  /* HELPERS */
+  /* ─── HELPERS ─── */
   const splitIntoVisualLines = (text, container) => {
     const words = text.split(' ');
     const tempDiv = document.createElement('div');

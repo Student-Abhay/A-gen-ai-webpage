@@ -1,22 +1,19 @@
 // src/components/ParticleField.jsx
+import React, { useMemo } from 'react'
 import { motion } from 'framer-motion'
 
-const pseudoRandom = (seed) => {
-  const value = Math.sin(seed * 9999.91) * 10000
-  return value - Math.floor(value)
-}
-
 export default function ParticleField() {
-  const particles = Array.from({ length: 50 }, (_, i) => ({
-    id: i,
-    x: pseudoRandom(i + 1) * 100,
-    y: pseudoRandom(i + 101) * 100,
-    size: pseudoRandom(i + 201) * 3 + 1,
-    duration: pseudoRandom(i + 301) * 20 + 15,
-    delay: pseudoRandom(i + 401) * 10,
-    opacity: pseudoRandom(i + 501) * 0.3 + 0.05,
-    driftX: pseudoRandom(i + 601) * 40 - 20,
-  }))
+  const particles = useMemo(() =>
+    Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 3 + 1,
+      duration: Math.random() * 20 + 15,
+      delay: Math.random() * 10,
+      opacity: Math.random() * 0.3 + 0.05,
+    })),
+  [])
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -32,12 +29,12 @@ export default function ParticleField() {
             background: p.id % 3 === 0
               ? 'rgba(108,99,255,0.6)'
               : p.id % 3 === 1
-                ? 'rgba(0,240,255,0.5)'
-                : 'rgba(255,0,110,0.4)',
+              ? 'rgba(0,240,255,0.5)'
+              : 'rgba(255,0,110,0.4)',
           }}
           animate={{
             y: [0, -80, 0],
-            x: [0, p.driftX, 0],
+            x: [0, Math.random() * 40 - 20, 0],
             opacity: [p.opacity, p.opacity * 2.5, p.opacity],
           }}
           transition={{

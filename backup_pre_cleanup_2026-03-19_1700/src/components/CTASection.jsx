@@ -19,9 +19,11 @@ export default function CTASection() {
         className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"
       >
         <div className="relative rounded-3xl border border-white/10 overflow-hidden">
-          <div className="absolute inset-0 bg-linear-to-br from-cyan-600/20 via-purple-600/20 to-pink-600/20" />
+          {/* Gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 via-purple-600/20 to-pink-600/20" />
           <div className="absolute inset-0 backdrop-blur-xl" />
 
+          {/* Animated border shimmer */}
           <div className="absolute inset-0 rounded-3xl overflow-hidden">
             <motion.div
               animate={{ rotate: 360 }}
@@ -39,7 +41,7 @@ export default function CTASection() {
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Ready to Build the
                 <br />
-                <span className="bg-linear-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
                   Future?
                 </span>
               </h2>
@@ -57,7 +59,7 @@ export default function CTASection() {
             >
               <button className="group relative px-10 py-4 rounded-full bg-white text-black font-semibold text-lg overflow-hidden transition-transform duration-300 hover:scale-105">
                 <span className="relative z-10">Start Free Trial</span>
-                <div className="absolute inset-0 bg-linear-to-r from-cyan-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="relative z-10 group-hover:text-white transition-colors duration-300">
                   Start Free Trial
                 </span>
@@ -74,7 +76,7 @@ export default function CTASection() {
               transition={{ delay: 0.6, duration: 0.5 }}
               className="text-gray-500 text-sm mt-8"
             >
-              No credit card required - 14-day free trial - Cancel anytime
+              No credit card required · 14-day free trial · Cancel anytime
             </motion.p>
           </div>
         </div>

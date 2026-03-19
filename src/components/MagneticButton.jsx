@@ -35,7 +35,7 @@ export default function MagneticButton({
       transition={{ type: 'spring', stiffness: 260, damping: 20, mass: 0.6 }}
       className={`relative inline-flex items-center justify-center overflow-hidden rounded-full
         px-8 py-4 font-semibold tracking-wide text-white
-        bg-gradient-to-r from-cyan-500 to-violet-600
+        bg-linear-to-r from-cyan-500 to-violet-600
         shadow-[0_0_24px_rgba(6,182,212,0.35)]
         hover:shadow-[0_0_40px_rgba(139,92,246,0.5)]
         transition-shadow duration-300 cursor-pointer select-none ${className}`}
@@ -44,7 +44,7 @@ export default function MagneticButton({
       {/* shine sweep */}
       <span
         className="pointer-events-none absolute inset-0 -translate-x-full
-          bg-gradient-to-r from-transparent via-white/20 to-transparent
+          bg-linear-to-r from-transparent via-white/20 to-transparent
           group-hover:translate-x-full transition-transform duration-700"
       />
       <span className="relative z-10 flex items-center gap-2">{children}</span>

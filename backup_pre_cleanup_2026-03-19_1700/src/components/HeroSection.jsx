@@ -26,6 +26,7 @@ export default function HeroSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      /* floating orb animation */
       gsap.to(orbRef.current, {
         y: -20,
         duration: 3,
@@ -34,6 +35,7 @@ export default function HeroSection() {
         repeat: -1,
       });
 
+      /* grid perspective drift */
       gsap.fromTo(
         gridRef.current,
         { rotateX: 55, opacity: 0 },
@@ -48,6 +50,7 @@ export default function HeroSection() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden px-6"
     >
+      {/* Perspective grid floor */}
       <div
         ref={gridRef}
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[200%] h-[60vh] opacity-0 pointer-events-none"
@@ -63,6 +66,7 @@ export default function HeroSection() {
         />
       </div>
 
+      {/* Central glow orb */}
       <div
         ref={orbRef}
         className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
@@ -73,6 +77,7 @@ export default function HeroSection() {
         }}
       />
 
+      {/* Floating accent rings */}
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
@@ -84,7 +89,9 @@ export default function HeroSection() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full border border-nexus-400/5 pointer-events-none"
       />
 
+      {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto text-center">
+        {/* Tag pill */}
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -97,12 +104,14 @@ export default function HeroSection() {
           </span>
         </motion.div>
 
+        {/* Main headline */}
         <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight text-white mb-6">
           {STAGGER_CHARS("Build at the")}
           <br />
           <span className="text-gradient">{STAGGER_CHARS("Speed of Thought")}</span>
         </h1>
 
+        {/* Sub copy */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -110,10 +119,11 @@ export default function HeroSection() {
           className="max-w-2xl mx-auto text-base sm:text-lg text-nexus-400 leading-relaxed mb-10"
         >
           Nexus fuses real-time collaboration, AI-augmented workflows, and a
-          design system that adapts to the way your team actually thinks - not
+          design system that adapts to the way your team actually thinks — not
           the other way around.
         </motion.p>
 
+        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -135,6 +145,7 @@ export default function HeroSection() {
           </button>
         </motion.div>
 
+        {/* Trust bar */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -157,6 +168,7 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

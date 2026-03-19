@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const footerLinks = {
   Product: ["Features", "Pricing", "Changelog", "Documentation", "Status"],
   Company: ["About", "Blog", "Careers", "Press", "Partners"],
@@ -10,6 +12,7 @@ export default function Footer() {
     <footer className="relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
+          {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
             <a
               href="#"
@@ -34,6 +37,7 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Link columns */}
           {Object.entries(footerLinks).map(([heading, links]) => (
             <div key={heading}>
               <h4 className="text-white font-semibold text-sm tracking-wider uppercase mb-4">
@@ -55,9 +59,10 @@ export default function Footer() {
           ))}
         </div>
 
+        {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-gray-600 text-sm">
-            Copyright {new Date().getFullYear()} NEXUS. All rights reserved.
+            © {new Date().getFullYear()} NEXUS. All rights reserved.
           </p>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
